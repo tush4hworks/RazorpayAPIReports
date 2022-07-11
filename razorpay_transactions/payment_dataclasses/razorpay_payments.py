@@ -100,11 +100,16 @@ class Payment:
         return self.id == other.id
 
 
-class PaymentSummaryDAO:
+class PaymentSummaryDataclassHelper:
     PaymentSummary = None
 
     @classmethod
-    def initialize_payment_summary_data_class(cls, fields: Iterable):
+    def initialize_payment_summary_dataclass(cls, fields: Iterable):
+        """
+        Create dataclass with given fields at runtime
+        :param fields:
+        :return:
+        """
         try:
             cls.PaymentSummary = make_dataclass("PaymentSummary", fields=fields, init=False)
             logger.info("Dataclass Generated")
@@ -114,6 +119,11 @@ class PaymentSummaryDAO:
 
     @classmethod
     def map_attributes(cls, payment: Payment):
+        """
+        Map attributes of dynamic dataclass from all-attribute dataclass and return new dataclass object
+        :param payment:
+        :return:
+        """
         payment_summary = cls.PaymentSummary()
         for f in set([f.name for f in fields(cls.PaymentSummary)]):
             setattr(payment_summary, f, getattr(payment, f))

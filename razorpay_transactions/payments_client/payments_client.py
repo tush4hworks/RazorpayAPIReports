@@ -3,7 +3,7 @@ from typing import List
 from razorpay_transactions.properties import razorpay_auth
 from razorpay_transactions.errors.exceptions import PaymentReportBaseException
 from razorpay_transactions.utils.log import ModuleLogger
-from razorpay_transactions.payment_dataclasses.rpay_payments import Payment
+from razorpay_transactions.payment_dataclasses.razorpay_payments import Payment
 
 logger = ModuleLogger.get_logger(__name__)
 

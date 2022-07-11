@@ -3,7 +3,7 @@ import os
 from dataclass_csv import DataclassReader, DataclassWriter
 from typing import List
 from razorpay_transactions.properties import Properties
-from razorpay_transactions.payment_dataclasses.rpay_payments import PaymentSummaryDAO, Payment
+from razorpay_transactions.payment_dataclasses.razorpay_payments import PaymentSummaryDataclassHelper, Payment
 from razorpay_transactions.utils.log import ModuleLogger
 
 logger = ModuleLogger.get_logger(__name__)
@@ -13,7 +13,7 @@ class CSVOperations:
 
     def __init__(self):
         self.csv_path = os.path.join(Properties.base_directory, f'{Properties.today_date}.csv')
-        PaymentSummaryDAO.initialize_payment_summary_data_class(Properties.columns_in_summary)
+        PaymentSummaryDataclassHelper.initialize_payment_summary_data_class(Properties.columns_in_summary)
 
     def read_payment_summary_csv(self):
         payment_summaries = []
@@ -23,7 +23,7 @@ class CSVOperations:
             return payment_summaries
 
         with open(self.csv_path, 'r') as payment_csv:
-            reader = DataclassReader(payment_csv, PaymentSummaryDAO.PaymentSummary)
+            reader = DataclassReader(payment_csv, PaymentSummaryDataclassHelper.PaymentSummary)
             for row in reader:
                 payment_summaries.append(row)
         return payment_summaries
@@ -41,12 +41,12 @@ class CSVOperations:
         if not payments:
             payments = []
         # Select fields to write
-        payment_summaries = [PaymentSummaryDAO.map_attributes(payment) for payment in payments]
+        payment_summaries = [PaymentSummaryDataclassHelper.map_attributes(payment) for payment in payments]
 
         # De-duplicate
         # existing_rows = self.read_payment_summary_csv()
         # payment_summaries = [payment for payment in payment_summaries if payment not in existing_rows]
 
         with open(self.csv_path, 'w') as f:
-            w = DataclassWriter(f, payment_summaries, PaymentSummaryDAO.PaymentSummary)
+            w = DataclassWriter(f, payment_summaries, PaymentSummaryDataclassHelper.PaymentSummary)
             w.write()
