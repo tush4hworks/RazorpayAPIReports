@@ -25,7 +25,7 @@ class PaymentsClient:
         payments = []
 
         batch = self.client.payment.all(option)
-        while len(batch["items"]) > 0:
+        while batch["items"]:
             payments.extend(batch["items"])
             option["skip"] = len(payments)
             batch = self.client.payment.all(option)
