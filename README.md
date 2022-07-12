@@ -21,7 +21,7 @@ A successful run will generate csv(s) with name(s) `<current_datestring>.csv` in
 
 # Usage
 ```buildoutcfg
-[ razorpay-transactions-summary  generate-reports --help  ]                                                                                               
+razorpay-transactions-summary  generate-reports --help                                                                                             
 
 Usage: razorpay-transactions-summary generate-reports [OPTIONS]
 
