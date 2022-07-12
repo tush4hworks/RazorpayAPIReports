@@ -1,25 +1,36 @@
 import os
 from collections import namedtuple
-from datetime import datetime, date, timedelta
+from enum import Enum
+
 razorpay_auth = namedtuple("auth", ["key_id", "key_secret"])
+
+
+class Mode(Enum):
+    quick_run = "quick_run"
+    backlog = "backlog"
+    schedule = "schedule"
 
 
 class Properties:
     base_directory = os.path.expanduser('~')
-    polling_interval = None
     columns_in_summary = None
-    filters = None
-    today_date = None
-    today_start_epoch = None
     razorpay_api_credentials = None
+    mode = None
 
     @classmethod
-    def initialize(cls,  polling_interval, columns_in_summary, filters=None):
-        cls.polling_interval = polling_interval
+    def initialize(cls, mode: Mode, columns_in_summary: list):
+        cls.mode = mode
         cls.columns_in_summary = columns_in_summary
-        cls.filters = filters
         cls.razorpay_api_credentials = razorpay_auth(os.environ["RAZORPAY_KEY_ID"], os.environ["RAZORPAY_KEY_SECRET"])
-        # TODO uncomment
-        today_date = date.today() - timedelta(days=10)
-        cls.today_date = today_date.strftime('%Y-%m-%d')
-        cls.today_start_epoch = int(datetime.combine(today_date, datetime.min.time()).timestamp())
+
+
+class RunProperties:
+    days_preceding = None
+    polling_interval = None
+    filters = None
+
+    @classmethod
+    def initialize(cls, days_preceding, polling_interval, filters):
+        cls.days_preceding = days_preceding
+        cls.polling_interval = polling_interval
+        cls.filters = filters

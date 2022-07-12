@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: razorpay-transactions-summary
+Version: 1.0
+Summary: Automate Reports Generation
+Author-email: tsharma@cloudera.com
+Keywords: razorpay payments summary description filter
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.7

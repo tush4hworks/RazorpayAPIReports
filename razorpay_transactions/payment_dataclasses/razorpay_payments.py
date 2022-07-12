@@ -1,5 +1,5 @@
 import datetime
-from dataclasses import dataclass, field, fields,make_dataclass
+from dataclasses import dataclass, field, fields, make_dataclass
 from typing import Iterable, Dict, Any
 from razorpay_transactions.utils.log import ModuleLogger
 from razorpay_transactions.errors.exceptions import PaymentReportBaseException
@@ -98,6 +98,9 @@ class Payment:
 
     def __eq__(self, other):
         return self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
 
 
 class PaymentSummaryDataclassHelper:

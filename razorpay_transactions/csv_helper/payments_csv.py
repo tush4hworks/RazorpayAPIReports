@@ -11,9 +11,9 @@ logger = ModuleLogger.get_logger(__name__)
 
 class CSVOperations:
 
-    def __init__(self):
-        self.csv_path = os.path.join(Properties.base_directory, f'{Properties.today_date}.csv')
-        PaymentSummaryDataclassHelper.initialize_payment_summary_data_class(Properties.columns_in_summary)
+    def __init__(self, date_string):
+        self.csv_path = os.path.join(Properties.base_directory, f'{date_string}.csv')
+        PaymentSummaryDataclassHelper.initialize_payment_summary_dataclass(Properties.columns_in_summary)
 
     def read_payment_summary_csv(self):
         payment_summaries = []
@@ -26,6 +26,7 @@ class CSVOperations:
             reader = DataclassReader(payment_csv, PaymentSummaryDataclassHelper.PaymentSummary)
             for row in reader:
                 payment_summaries.append(row)
+
         return payment_summaries
 
     def write_payment_summary_csv(self, payments: List[Payment] = None):

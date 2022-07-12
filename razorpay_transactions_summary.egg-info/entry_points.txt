@@ -1,0 +1,2 @@
+[console_scripts]
+razorpay-transactions-summary = razorpay_transactions.driver:main
