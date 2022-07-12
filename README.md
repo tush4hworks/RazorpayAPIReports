@@ -39,15 +39,15 @@ Options:
 # Run Modes
 
 There are three run modes supported:
-- quickrun - Generates current day's summary report
-- backlog - Generates daily reports for `n` preceding-days till yesterday
-- schedule - Starts a thread which will keep continuously polling razorpay API and updating current day's csv. It will automatically start a new csv for the following day and so on.
+- `quickrun` - Generates current day's summary report
+- `backlog` - Generates daily reports for `n` preceding-days till yesterday
+- `schedule` - Starts a thread which will keep continuously polling razorpay API and updating current day's csv. It will automatically start a new csv for the following day and so on.
   - This will leave your terminal hanging with the script running continuously. You can run this process in background to avoid that and kill using `ps -eaf` later on when required.
     
 # Description of Options
-- columns-in-summary: comma separated list of columns to include in the csv. Should be one-or-more of `id,entity,amount,currency,status,method,order_id,description,international,refund_status,amount_refunded,captured,email,contact,fee,tax,error_code,error_description,error_step,error_source,error_reason,created_at`
-- days-preceding: Applicable for backlog mode. Number of preceding days to generate report for
-- polling-interval: Applicable for schedule mode. Seconds to sleep before next update.
+- `columns-in-summary`: comma separated list of columns to include in the csv. Should be one-or-more of `id,entity,amount,currency,status,method,order_id,description,international,refund_status,amount_refunded,captured,email,contact,fee,tax,error_code,error_description,error_step,error_source,error_reason,created_at`
+- `days-preceding`: Applicable for backlog mode. Number of preceding days to generate report for
+- `polling-interval`: Applicable for schedule mode. Seconds to sleep before next update.
 
 # Filtering
 
