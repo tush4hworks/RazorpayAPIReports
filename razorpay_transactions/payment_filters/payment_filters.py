@@ -27,11 +27,11 @@ class PaymentFilters:
 
     @staticmethod
     def is_in(filter_column, filter_value):
-        return lambda x: getattr(x, filter_column) in filter_value
+        return lambda x: getattr(x, filter_column) in filter_value.split(',')
 
     @staticmethod
     def is_not_in(filter_column, filter_value):
-        return lambda x: getattr(x, filter_column) not in filter_value
+        return lambda x: getattr(x, filter_column) not in filter_value.split(',')
 
     @staticmethod
     def greater_than(filter_column, filter_value):
