@@ -89,9 +89,9 @@ filters argument accepts a valid json as a string in the following form:
 ```
 
 Explanation:
-The top level list is a list of filter-blocks.
-filter-blocks are logically combined via the AND operation.
-The filter specs that make up a filter-block themselves are logically combined via the OR operation.
+- The top level list is a list of filter-blocks.
+- filter-blocks are logically combined via the `AND` operation.
+- The filter specs that make up a filter-block themselves are logically combined via the `OR` operation.
 
 In the preceding example, therefore it will include payments in which :
 
