@@ -39,7 +39,7 @@ Options:
 # Run Modes
 
 There are three run modes supported:
-- `quickrun` - Generates current day's summary report
+- `quick_run` - Generates current day's summary report
 - `backlog` - Generates daily reports for `n` preceding-days till yesterday
 - `schedule` - Starts a thread which will keep continuously polling razorpay API and updating current day's csv. It will automatically start a new csv for the following day and so on.
   - This will leave your terminal hanging with the script running continuously. You can run this process in background to avoid that and kill using `ps -eaf` later on when required.
