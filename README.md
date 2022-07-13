@@ -51,13 +51,13 @@ There are three run modes supported:
 
 # Filtering
 
-Filtering is supported for following condition:
-- equals
-- not_equals
-- is_in
-- is_not_in
-- greater_than
-- less_than
+Filtering is supported for following conditions:
+- `equals`
+- `not_equals`
+- `is_in` - (comma separated filter_value)
+- `is_not_in` - (comma separated filter_value)
+- `greater_than`
+- `less_than`
 
 Additionally, filters can be combined with `OR` / `AND` conditions as demonstrated below.
 
