@@ -54,8 +54,8 @@ There are three run modes supported:
 Filtering is supported for following conditions:
 - `equals`
 - `not_equals`
-- `is_in` - (comma separated filter_value)
-- `is_not_in` - (comma separated filter_value)
+- `is_in` - provide comma separated filter_value
+- `is_not_in` - provide comma separated filter_value
 - `greater_than`
 - `less_than`
 
