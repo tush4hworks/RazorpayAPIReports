@@ -108,7 +108,7 @@ You can either pass `polling-interval, filters, days-preceding` arguments via co
 
 ```
 
-* Note: dashes are replaced with underscores in the json file.
+* Note: `dashes` are `replaced` with underscores in the json file.
 * Passing via json file is helpful as updates to parameters will get reflected automatically in schedule mode.
   
 # Sample Run
